@@ -16,12 +16,12 @@ steps:
       mkdir -p build
       go mod tidy
       go build -o build/hello hello/hello.go
-      ls -l build
     artifact_paths:
       - "build/hello"
 
   - label: ":rocket: Execute Binary"
     command: |
+      buildkite-agent artifact search "*"
       buildkite-agent artifact download "build/hello" ./hello
       name=$(buildkite-agent meta-data get name)
       ./hello/hello name
