@@ -23,6 +23,3 @@ steps:
     command: |
       name=$(buildkite-agent meta-data get name)
       ./build/hello name
-    plugins:
-      - docker#v5.6.0:
-          image: "golang:1.18.0"
