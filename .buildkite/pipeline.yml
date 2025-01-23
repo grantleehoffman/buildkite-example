@@ -1,0 +1,11 @@
+steps:
+  - label: "Build Go Binary"
+    plugins:
+      - docker#v5.12.0:
+          image: "golang:1.18.0"
+          workdir: /app
+    command: |
+      mkdir -p /app/build
+      go mod tidy
+      go build -o /app/build/hello hello/hello.go
+
