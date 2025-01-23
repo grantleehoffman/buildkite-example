@@ -25,7 +25,7 @@ steps:
     depends_on:
       - "build"
     command: |
-      buildkite-agent meta-data get name
+      buildkite-agent meta-data get name || echo "Failed to retrieve metadata"
       buildkite-agent artifact download "build/hello" .
       name_input=$(buildkite-agent meta-data get name)
       chmod +x build/hello
