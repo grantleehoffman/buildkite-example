@@ -21,5 +21,6 @@ steps:
 
   - label: ":rocket: Execute Binary"
     command: |
+      buildkite-agent artifact download "build/hello" ./hello
       name=$(buildkite-agent meta-data get name)
-      ./build/hello name
+      ./hello name
