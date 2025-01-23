@@ -23,4 +23,4 @@ steps:
     command: |
       buildkite-agent artifact download "build/hello" ./hello
       name=$(buildkite-agent meta-data get name)
-      ./hello name
+      ./hello/hello name
