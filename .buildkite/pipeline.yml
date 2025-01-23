@@ -33,7 +33,5 @@ steps:
       buildkite-agent meta-data keys
       buildkite-agent meta-data get user-name
       buildkite-agent artifact download "build/hello" .
-      NAME=$(buildkite-agent meta-data get "user-name" | tr -d '\n')
       chmod +x build/hello
-      echo $NAME
-      ./build/hello "$NAME"
+      ./build/hello $(buildkite-agent meta-data get "user-name")
