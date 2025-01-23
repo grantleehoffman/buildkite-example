@@ -3,9 +3,7 @@ steps:
     prompt: "Please provide your name"
     fields:
       - text: "Name"
-        key: "name"
-        hint: "Enter your first name"
-        required: true
+        key: "user-name"
 
   - label: ":docker: Build Go Binary"
     key: "build"
@@ -27,7 +25,7 @@ steps:
     command: |
       buildkite-agent meta-data keys
       buildkite-agent artifact download "build/hello" .
-      export NAME=$(buildkite-agent meta-data get name)
+      NAME=$(buildkite-agent meta-data get user-name)
       chmod +x build/hello
       echo $NAME
       ./build/hello "$NAME"
