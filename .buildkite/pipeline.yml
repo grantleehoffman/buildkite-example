@@ -27,5 +27,5 @@ steps:
     command: |
       buildkite-agent artifact download "build/hello" .
       name=$(buildkite-agent meta-data get name)
-      ls -l build
+      chmod +x build/hello
       ./build/hello name
