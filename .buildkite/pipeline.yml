@@ -25,6 +25,7 @@ steps:
     depends_on:
       - "build"
     command: |
+      buildkite-agent meta-data keys
       buildkite-agent artifact download "build/hello" .
       export NAME=$(buildkite-agent meta-data get name)
       chmod +x build/hello
