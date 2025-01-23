@@ -21,6 +21,8 @@ steps:
       - "build/hello"
 
   - label: ":rocket: Execute Binary"
+    depends_on:
+      - ":docker: Build Go Binary"
     command: |
       buildkite-agent artifact download "build/hello" .
       name=$(buildkite-agent meta-data get name)
