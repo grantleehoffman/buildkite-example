@@ -1,11 +1,28 @@
 steps:
-  - label: "Build Go Binary"
+  - block: ":wave: Name Input"
+    prompt: "Please provide your name"
+    fields:
+      - text: "Name"
+        key: "name"
+        hint: "Enter your first name"
+	required: true
+
+  - label: ":docker: Build Go Binary"
     plugins:
       - docker#v5.12.0:
           image: "golang:1.18.0"
           workdir: /app
     command: |
-      mkdir -p /app/build
+      mkdir -p build
       go mod tidy
-      go build -o /app/build/hello hello/hello.go
+      go build -o build/hello hello/hello.go
+    artifact_paths:
+      - "build/hello"
 
+  - label: ":rocket: Execute Binary"
+    command: |
+      name=$(buildkite-agent meta-data get name)
+      ./build/hello name
+    plugins:
+      - docker#v5.6.0:
+          image: "golang:1.18.0"
