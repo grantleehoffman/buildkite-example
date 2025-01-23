@@ -5,7 +5,7 @@ steps:
       - text: "Name"
         key: "name"
         hint: "Enter your first name"
-	required: true
+        required: true
 
   - label: ":docker: Build Go Binary"
     plugins:
