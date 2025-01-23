@@ -5,6 +5,13 @@ steps:
       - text: "Name"
         key: "user-name"
 
+  - label: ":bug: Debug Metadata"
+    command: |
+      echo "Listing all metadata keys:"
+      buildkite-agent meta-data keys
+      echo "Fetching 'user-name':"
+      buildkite-agent meta-data get user-name || echo "Key 'user-name' not found"
+
   - label: ":docker: Build Go Binary"
     key: "build"
     plugins:
