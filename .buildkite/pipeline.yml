@@ -16,6 +16,7 @@ steps:
       mkdir -p build
       go mod tidy
       go build -o build/hello hello/hello.go
+      ls -l build
     artifact_paths:
       - "build/hello"
 
